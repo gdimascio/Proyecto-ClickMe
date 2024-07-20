@@ -31,11 +31,63 @@
 </head>
 <body>
     <h1>Try to click the button!</h1>
-    <div class="div">
-        <div class="button-div">
-            <!-- <button style="background-color: green; cursor: crosshair;" ></button> -->
-            <button class="fly-bttn" id="button" onclick="alert('Bien ahi!!')">Click me</button>
+    <div class="divs-areas">
+        <div class="div-area" id="div1">
+            <div class="button-div">
+                <button class="fly-bttn" id="_button" onclick="alert('Well Done!!')">Click me</button>
+            </div>
+        </div>
+        <div class="div-area" id="div2">
+            <div class="button-div">
+                <button class="fly-bttn" id="_button" onclick="alert('Well Done!!')">Click me</button>
+            </div>
+        </div>
+        <div class="div-area" id="div3">
+            <div class="button-div">
+                <button class="fly-bttn" id="_button" onclick="alert('Well Done!!')">Click me</button>
+            </div>
+        </div>
+        <div class="div-area" id="div4">
+            <div class="button-div">
+                <button class="fly-bttn" id="_button" onclick="alert('Well Done!!')">Click me</button>
+            </div>
         </div>
     </div>
+    
+    <script>
+        const distReturn = 280; // distance from the mouse to return to center
+        const moveDist = 135; // displacement from the mouse on enter (divBttWth/2 + bttWth/2)
+        const dist = 150; // min distance from the mouse to trigger movement (divBttWth/2)
+
+        let divs = document.querySelectorAll(".div-area");
+        divs.forEach(div => {
+            const button = div.querySelector(".fly-bttn");
+            // move the button away from the cursor
+            div.addEventListener('mousemove', (event) => {
+                cursorX = event.clientX;
+                cursorY = event.clientY;
+
+                // get the bounding rect of the button
+                let buttonRect = button.getBoundingClientRect();
+
+                // calculate the distance between the cursor and the button
+                let distance = distCurs(buttonRect);
+
+                // check if the cursor is within Xpx of the button's center
+                if (distance <= dist) {
+                    button.style.transform = `translate(
+                        ${bttDispX(buttonRect, moveDist)}px, 
+                        ${bttDispY(buttonRect, moveDist)}px
+                    )`;
+                } else {
+                    if(distance >= distReturn){
+                        button.style.transform = 'translate(0, 0)';
+                    }
+                    // move the button back to its original position
+                }
+            });
+        })
+    </script>
+
 </body>
 </html>
