@@ -39,6 +39,23 @@ body{
     justify-content: center;
     align-items: center;
     background-color:#595959;
+    position: absolute;
+}
+#div1{
+    top: 50%;
+    left: 20%;
+}
+#div2{
+    top: 20%;
+    left: 15%;
+}
+#div3{
+    top: 35%;
+    right: 10%;
+}
+#div4{
+    top: 5%;
+    right: 20%;
 }
 .button-div {
     width: var(--divBttWth);
